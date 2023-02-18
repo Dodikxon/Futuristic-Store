@@ -8,6 +8,7 @@ function Button(props: any){
 const Navbar = () => {
     return (
         <nav className="header-navbar">
+            <Button link={'/'} name={'Store'}/>
             <Button link={'/login'} name={'Sign In'}/>
             <Button link={'/register'} name={'Sign Up'}/>
         </nav>
