@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const api = 'http://localhost:5000/auth'
+const api = 'http://localhost:5000/'
 
 export const register = (username: string, email: string, password: string) =>{
     return async () => {
         try {
-            const response = axios.post(`${api}/registration`, {
+            const response = axios.post(`${api}auth/registration`, {
                 username: username,
                 email: email,
                 password: password,
@@ -13,7 +13,6 @@ export const register = (username: string, email: string, password: string) =>{
                 .then((response) => {
                     if (response.data.token){
                         localStorage.setItem('token', response.data.token)
-                        // Add redirect on store
                         return response.data
                     }
                 })
@@ -24,23 +23,17 @@ export const register = (username: string, email: string, password: string) =>{
 }
 
 export const login = (email: string, password: string) => {
-    return async () => {
-        try {
-            const response = axios.post(`${api}/login`,{
-                email: email,
-                password: password,
-            })
-                .then((response) => {
-                    if (response.data.token){
-                        localStorage.setItem('token', response.data.token)
-                        // Add redirect on store
-                        return response.data
-                    }
-                })
-        }catch (error) {
-            console.log(error)
-        }
-    }
+    const response = axios.post(`${api}auth/login`,{
+        email: email,
+        password: password,
+    })
+        .then((response) => {
+            if (response.data.token){
+                localStorage.setItem('token', response.data.token)
+            }
+            return response.data
+        })
+
 }
 
 export const logout = () => {
