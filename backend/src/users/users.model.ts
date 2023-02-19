@@ -1,4 +1,5 @@
-import { Column, DataType, Model, Table } from 'sequelize-typescript';
+import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
+import { Products } from '../products/products.model';
 
 interface UserCreationAttrs {
   username: string;
@@ -32,4 +33,7 @@ export class User extends Model<User, UserCreationAttrs> {
     allowNull: false,
   })
   password: string;
+
+  @HasMany(() => Products)
+  products: Products[];
 }
