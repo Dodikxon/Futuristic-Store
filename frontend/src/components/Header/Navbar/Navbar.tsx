@@ -8,6 +8,10 @@ function Button(props: any){
     return <Link to={props.link} className="header-btn">{props.name}</Link>
 }
 
+function Logout(props: any){
+    return <a href={props.link} onClick={logout} className="header-btn">{props.name}</a>
+}
+
 
 const Navbar = () => {
     const token = localStorage.getItem('token')
@@ -16,7 +20,7 @@ const Navbar = () => {
             <nav className="header-navbar">
                 <Button link={'/'} name={'Store'}/>
                 <Button link={'/sale'} name={'Sale'}/>
-                <Button link={'/login'} onClick={logout()} name={'logout'}/>
+                <Logout link={'/login'} name={'logout'}/>
             </nav>
         )
     }

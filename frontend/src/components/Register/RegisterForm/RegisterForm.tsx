@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './RegisterForm.scss';
 import { useNavigate } from 'react-router-dom';
 import {register} from "../../../store/action-creators/user";
+import {useCookies} from "react-cookie";
 
 
 function Input(props: any){
@@ -15,6 +16,9 @@ function Input(props: any){
 
 
 const RegisterForm = () => {
+    const [emailCookie, setEmailCookie] = useCookies(['email']);
+    const [passwordCookie, setPasswordCookie] = useCookies(['password']);
+    const [usernameCookie, setUsernameCookie] = useCookies(['username']);
     const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -22,6 +26,9 @@ const RegisterForm = () => {
     const [isRegister, setIsRegister] = useState(false)
     if(isRegister){
         register(email, username, password)
+        setEmailCookie('email', email)
+        setPasswordCookie('password', password)
+        setUsernameCookie('username', username)
         setTimeout( () => {
             navigate('/');
         }, 500);
