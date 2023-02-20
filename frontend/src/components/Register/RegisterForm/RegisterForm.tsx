@@ -1,5 +1,8 @@
 import React, {useState} from 'react';
 import './RegisterForm.scss';
+import { useNavigate } from 'react-router-dom';
+import {register} from "../../../store/action-creators/user";
+
 
 function Input(props: any){
     return <input type={props.type}
@@ -12,9 +15,17 @@ function Input(props: any){
 
 
 const RegisterForm = () => {
+    const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [username, setUsername] = useState('')
+    const [isRegister, setIsRegister] = useState(false)
+    if(isRegister){
+        register(email, username, password)
+        setTimeout( () => {
+            navigate('/');
+        }, 500);
+    }
     return (
         <section className='login'>
             <h1 className='login-title'>Register</h1>
@@ -38,9 +49,10 @@ const RegisterForm = () => {
                            value={password}
                            change={setPassword}
                     />
-                    <button type='submit'
-                            name='submit'
-                            className='login-submit'>
+                    <button onClick={e => setIsRegister(true)}
+                        type='submit'
+                        name='submit'
+                        className='login-submit'>
                         Register
                     </button>
                 </div>
