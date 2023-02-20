@@ -28,7 +28,6 @@ const LoginForm = () => {
         setTimeout( () => {
             navigate('/');
             }, 500);
-
     }
     return (
         <section className='login'>
