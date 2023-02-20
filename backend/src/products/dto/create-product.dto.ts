@@ -4,5 +4,6 @@ export class CreateProductDto {
   readonly userId: number;
   readonly image: string;
   readonly game: string;
+  readonly price: number;
   readonly rating: string;
 }

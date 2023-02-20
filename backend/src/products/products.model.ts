@@ -15,6 +15,7 @@ interface ProductCreationAttrs {
   image: string;
   game: string;
   rating: string;
+  price: number;
 }
 
 @Table({ tableName: 'products' })
@@ -41,6 +42,9 @@ export class Products extends Model<Products, ProductCreationAttrs> {
 
   @Column({ type: DataType.STRING, allowNull: true })
   image: string;
+
+  @Column({ type: DataType.NUMBER, allowNull: false })
+  price: number;
 
   @ForeignKey(() => User)
   @Column({ type: DataType.INTEGER })
