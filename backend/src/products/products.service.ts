@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Products } from './products.model';
 import { CreateProductDto } from './dto/create-product.dto';
+import * as path from 'path';
 
 @Injectable()
 export class ProductsService {
@@ -10,7 +11,9 @@ export class ProductsService {
   ) {}
 
   async createProduct(dto: CreateProductDto, file) {
-    dto.image = file ? file.filename : '';
+    const imageName = file ? file.filename : '';
+    const src = path.join(__dirname, '../uploads/file/');
+    dto.image = src + imageName;
     const product = await this.productRepository.create({ ...dto });
     return product;
   }

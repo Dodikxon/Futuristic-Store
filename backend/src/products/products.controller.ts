@@ -22,7 +22,7 @@ export class ProductsController {
   @UseGuards(JwtAuthGuard)
   @Post('/create')
   @UseInterceptors(
-    FileInterceptor('file', {
+    FileInterceptor('image', {
       storage: diskStorage({
         destination: './uploads/files',
         filename: (req, file, cb) => {

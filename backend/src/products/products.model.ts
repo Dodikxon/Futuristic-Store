@@ -26,7 +26,7 @@ export class Products extends Model<Products, ProductCreationAttrs> {
   })
   id: number;
 
-  @Column({ type: DataType.STRING, unique: true, allowNull: false })
+  @Column({ type: DataType.STRING, allowNull: false })
   title: string;
 
   @Column({ type: DataType.TEXT, allowNull: false })

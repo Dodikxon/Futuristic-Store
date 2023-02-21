@@ -1,6 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './ProductsList.scss';
 import {Link} from "react-router-dom";
+import {useTypedSelector} from "../../../hooks/useTypedSelector";
+import {useActions} from "../../../hooks/useActions";
+import {fetchProducts} from "../../../store/action-creators/product";
 
 function Button(props: any){
     return <Link to={props.link} className="product-btn">{props.name}</Link>
@@ -37,25 +40,54 @@ const Product = (props: any) => {
 };
 
 const ProductList = () => {
+    const {products, error, loading} = useTypedSelector(state => state.product)
+    const { fetchProducts } = useActions()
+    useEffect(() =>{
+        fetchProducts()
+    }, [])
+    if(loading){
+        return (
+            <div className='articles'>
+                <div className="container">
+                    <div className="articles-in">
+                        <div className="articles-in-title">
+                            <h1 className="articles-in-title-text">
+                                Loading...
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+    if(error){
+        return (
+            <div className='articles'>
+                <div className="container">
+                    <div className="articles-in">
+                        <div className="articles-in-title">
+                            <h1 className="articles-in-title-text">
+                                {error}
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
     return (
         <section className='productList'>
             <div className="container">
-                <Product
-                    productDetail={'lol'}
-                    productSrc={'https://cdn-offer-photos.zeusx.com/2f61b34e-6e43-4889-bffa-cd774a0e886d.jpg'}
-                    productAlt={'LOL'}
-                    productTitle={'LOL'}
-                    productDescription={'Rank: GOLD'}
-                    productPrice={'100 Rub'}
-                />
-                <Product
-                    productDetail={'dota'}
-                    productSrc={'https://ru.ggheaven.com/wp-content/uploads/2021/04/1.png'}
-                    productAlt={'DOTA'}
-                    productTitle={'Dota 2'}
-                    productDescription={'MMR: 3200'}
-                    productPrice={'3200 Rub'}
-                />
+                {products.map( product =>
+                    <Product
+                        productDetail={product.id}
+                        productSrc={`http://localhost:5000${product.image}`}
+                        productAlt={product.game}
+                        productTitle={product.title}
+                        productDescription={product.description}
+                        productPrice={product.rating}
+                    />
+                )}
             </div>
         </section>
     );
