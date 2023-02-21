@@ -6,4 +6,5 @@ export class CreateProductDto {
   readonly rating: string;
 
   image: string;
+  readonly price: number;
 }

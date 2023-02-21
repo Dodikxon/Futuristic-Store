@@ -43,6 +43,8 @@ export const tokenUpdate = (email: string, password: string) => {
         })
 }
 
+
+
 export const logout = () => {
     localStorage.removeItem('token')
 }

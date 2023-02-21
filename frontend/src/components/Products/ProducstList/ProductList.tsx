@@ -17,6 +17,10 @@ function Description(props: any){
     return <p className="product-description">{props.description}</p>
 }
 
+function Rating(props: any){
+    return <p className="product-price">{props.rating}</p>
+}
+
 function Price(props: any){
     return <h6 className="product-price">{props.price}</h6>
 }
@@ -29,9 +33,10 @@ const Product = (props: any) => {
     return (
         <div className="product">
             <div className="product-text">
-                <Image src={props.productSrc} alt={props.productAlt}/>
+                <Image src={`http://localhost:5000/products/${props.productSrc}`} alt={props.productAlt}/>
                 <Title detail={props.productDetail} title={props.productTitle}/>
                 <Description description={props.productDescription}/>
+                <Rating rating={props.productRating}/>
                 <Price price={props.productPrice} />
                 <Button name={'buy'} link={'/basket'} />
             </div>
@@ -81,11 +86,12 @@ const ProductList = () => {
                 {products.map( product =>
                     <Product
                         productDetail={product.id}
-                        productSrc={`http://localhost:5000/products/${product.image}`}
+                        productSrc={`${product.image}`}
                         productAlt={product.game}
                         productTitle={product.title}
                         productDescription={product.description}
-                        productPrice={product.rating}
+                        productRating={product.rating}
+                        productPrice={product.price + 'RUB'}
                     />
                 )}
             </div>

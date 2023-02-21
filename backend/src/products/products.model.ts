@@ -29,17 +29,19 @@ export class Products extends Model<Products, ProductCreationAttrs> {
   @Column({ type: DataType.STRING, allowNull: false })
   title: string;
 
-  @Column({ type: DataType.TEXT, allowNull: false })
+  @Column({ type: DataType.STRING, allowNull: false })
   description: string;
 
-  @Column({ type: DataType.TEXT, allowNull: false })
+  @Column({ type: DataType.STRING, allowNull: false })
   rating: string;
 
-  @Column({ type: DataType.TEXT, allowNull: false })
+  @Column({ type: DataType.STRING, allowNull: false })
   game: string;
 
   @Column({ type: DataType.STRING, allowNull: false })
   image: string;
+  @Column({ type: DataType.INTEGER, allowNull: false })
+  price: number;
 
   @ForeignKey(() => User)
   @Column({ type: DataType.INTEGER })

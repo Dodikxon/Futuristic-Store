@@ -7,14 +7,15 @@ const api = 'http://localhost:5000/'
 axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
 
 const ERROR = "Error products not load"
-export const create = (title: string, description: string, rating: string, game: string, userId: number, image: string) =>{
+export const createProduct = (title: string, description: string, rating: string, game: string, userId: number, image: File | undefined, price: number | undefined) =>{
     const response = axios.post(`${api}products/create`, {
         title: title,
         description: description,
         rating: rating,
         game: game,
         userId: userId,
-        image: image
+        image: image,
+        price: price
     },
         )
         .then((response) => {

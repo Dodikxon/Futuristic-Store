@@ -31,6 +31,44 @@
     font-weight: 400;
     margin: 15px 0 0 0;
     color: #0D0D0D;
+
+    &-file{
+      display: none;
+      &-label{
+        cursor: pointer;
+        color: #F2F0D5;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        transition: all 0.5s ease;
+        width: 100%;
+        border: 1px dashed #F2F0D5;
+        &:hover{
+          font-weight: 700;
+          font-size: 30px;
+          transition: all 0.5s ease;
+        }
+      }
+    }
+  }
+
+  &-textarea{
+    height: 100px;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    max-height: 250px;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 400;
+    margin: 15px 0 0 0;
+    color: #0D0D0D;
   }
 
   &-submit{
@@ -59,4 +97,7 @@
   text-transform: uppercase;
   color: #0D0D0D;
   font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

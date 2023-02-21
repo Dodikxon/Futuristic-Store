@@ -53,6 +53,12 @@ export class AuthService {
     };
   }
 
+  async decodeToken(token: string) {
+    return {
+      token: this.jwtService.decode(token),
+    };
+  }
+
   private async validateUser(userDto: CreateUserDto) {
     const user = await this.userService.getUserByEmail(userDto.email);
     const passwordEquals = await bcrypt.compare(
