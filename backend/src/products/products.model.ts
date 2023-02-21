@@ -12,7 +12,6 @@ interface ProductCreationAttrs {
   title: string;
   description: string;
   userId: number;
-  image: string;
   game: string;
   rating: string;
 }
@@ -39,9 +38,8 @@ export class Products extends Model<Products, ProductCreationAttrs> {
   @Column({ type: DataType.TEXT, allowNull: false })
   game: string;
 
-  @Column({ type: DataType.STRING, allowNull: true })
+  @Column({ type: DataType.STRING, allowNull: false })
   image: string;
-
 
   @ForeignKey(() => User)
   @Column({ type: DataType.INTEGER })

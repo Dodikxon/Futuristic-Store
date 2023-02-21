@@ -16,8 +16,8 @@ const BadData = 'Incorrect data';
 @Injectable()
 export class AuthService {
   constructor(
-      private userService: UsersService,
-      private jwtService: JwtService,
+    private userService: UsersService,
+    private jwtService: JwtService,
   ) {}
 
   async login(userDto: CreateUserDto) {
@@ -28,7 +28,7 @@ export class AuthService {
   async registration(userDto: CreateUserDto) {
     const candidate = await this.userService.getUserByEmail(userDto.email);
     const username_candidate = await this.userService.getUserByUsername(
-        userDto.username,
+      userDto.username,
     );
     if (candidate) {
       throw new HttpException(`${BadRequest}`, HttpStatus.BAD_REQUEST);
@@ -56,8 +56,8 @@ export class AuthService {
   private async validateUser(userDto: CreateUserDto) {
     const user = await this.userService.getUserByEmail(userDto.email);
     const passwordEquals = await bcrypt.compare(
-        userDto.password,
-        user.password,
+      userDto.password,
+      user.password,
     );
     if (user && passwordEquals) {
       return user;

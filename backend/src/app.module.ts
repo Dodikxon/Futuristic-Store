@@ -7,12 +7,15 @@ import { AuthController } from './auth/auth.controller';
 import { AuthService } from './auth/auth.service';
 import { AuthModule } from './auth/auth.module';
 import { ProductsController } from './products/products.controller';
-import { ProductsService } from './products/products.service';
 import { ProductsModule } from './products/products.module';
 import { Products } from './products/products.model';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
   imports: [
+    MulterModule.register({
+      dest: './uploads',
+    }),
     ConfigModule.forRoot({
       envFilePath: '.env',
     }),

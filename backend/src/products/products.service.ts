@@ -9,7 +9,8 @@ export class ProductsService {
     @InjectModel(Products) private productRepository: typeof Products,
   ) {}
 
-  async createProduct(dto: CreateProductDto) {
+  async createProduct(dto: CreateProductDto, file) {
+    dto.image = file ? file.filename : '';
     const product = await this.productRepository.create({ ...dto });
     return product;
   }
