@@ -1,8 +1,8 @@
 import {
   Body,
   Controller,
-  Get,
-  Post,
+  Get, Param,
+  Post, Res,
   UploadedFile,
   UseGuards,
   UseInterceptors,
@@ -24,7 +24,7 @@ export class ProductsController {
   @UseInterceptors(
     FileInterceptor('image', {
       storage: diskStorage({
-        destination: './uploads/files',
+        destination: './dist/uploads/files',
         filename: (req, file, cb) => {
           const randomName = Array(32)
             .fill(null)
@@ -45,5 +45,9 @@ export class ProductsController {
   @Get('')
   getAll() {
     return this.productService.allProducts();
+  }
+  @Get('/:filename')
+  async getFile(@Param('filename') filename: string, @Res() res: any) {
+    res.sendFile(filename, { root: 'dist/uploads/files' });
   }
 }

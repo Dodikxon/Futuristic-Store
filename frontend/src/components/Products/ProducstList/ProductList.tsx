@@ -81,7 +81,7 @@ const ProductList = () => {
                 {products.map( product =>
                     <Product
                         productDetail={product.id}
-                        productSrc={`http://localhost:5000${product.image}`}
+                        productSrc={`http://localhost:5000/products/${product.image}`}
                         productAlt={product.game}
                         productTitle={product.title}
                         productDescription={product.description}

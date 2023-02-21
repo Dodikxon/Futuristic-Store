@@ -12,8 +12,7 @@ export class ProductsService {
 
   async createProduct(dto: CreateProductDto, file) {
     const imageName = file ? file.filename : '';
-    const src = path.join(__dirname, '../uploads/file/');
-    dto.image = src + imageName;
+    dto.image = imageName;
     const product = await this.productRepository.create({ ...dto });
     return product;
   }
