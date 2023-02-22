@@ -4,10 +4,8 @@ import {ProductAction, ProductActionTypes} from "../../types/product";
 
 const api = 'http://localhost:5000/'
 
-axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
-
 const ERROR = "Error products not load"
-export const createProduct = (title: string, description: string, rating: string, game: string, userId: number, image: File | undefined, price: number | undefined) =>{
+export const createProduct = (title: string, description: string, rating: string, game: string, userId: number, image: FormData, price: number | undefined) =>{
     const response = axios.post(`${api}products/create`, {
         title: title,
         description: description,
@@ -15,8 +13,11 @@ export const createProduct = (title: string, description: string, rating: string
         game: game,
         userId: userId,
         image: image,
-        price: price
-    },
+        price: price,
+    },{
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Content-Type': `multipart/form-data;`}}
         )
         .then((response) => {
             if (response.data.token){

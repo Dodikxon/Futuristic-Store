@@ -22,16 +22,6 @@ function Textarea (props: any){
                      name={props.name}/>
 }
 
-function FileInput (props: any){
-    return <label className='login-input-file-label'>
-                Select Image <br/>
-        <input type="file"
-                   name={props.name}
-                   className='login-input-file'
-                   onChange={e => props.change(e.target.value)}
-                   value={props.value}/>
-            </label>
-}
 
 const ProductSale = () => {
     const navigate = useNavigate()
@@ -39,10 +29,9 @@ const ProductSale = () => {
     const [description, setDescription] = useState('')
     const [rating, setRating] = useState('')
     const [game, setGame] = useState('')
-    const [image, setImage] = useState<File>()
-    const [price, setPrice] = useState()
-    const [userId, setUserId] = useState(0)
-    const [isSubmit, setIsSubmit] = useState(false)
+    const [price, setPrice] = useState(undefined)
+    const [image, setImage] = useState<any>()
+    const [userId, setUserId] = useState<number>(0)
     const token = localStorage.getItem('token')
     if(token){
         const tokenDecode = (token: string ) => {
@@ -52,10 +41,20 @@ const ProductSale = () => {
                 })
         }
         tokenDecode(token)
-        if (isSubmit){
-            createProduct(title, description, rating, game, userId, image, price);
-            navigate('/');
-        }
+        const uploadImage = (event: any) => {
+            console.log(event.target.files[0])
+            setImage(event.target.files[0]);
+        };
+        const productSubmitHandler = (event: any) => {
+            event.preventDefault();
+            const formData = new FormData();
+            formData.append(`files`, image)
+            createProduct(title, description, rating, game, userId, image, price)
+            setTimeout( () => {
+                navigate('/');
+            }, 500);
+            }
+
         return (
             <section className='login'>
                 <h1 className='login-title'>Sale</h1>
@@ -86,19 +85,21 @@ const ProductSale = () => {
                                change={setGame}
                         />
                         <p className='sale-userid'>You`re ID: {userId}</p>
-                        <FileInput
-                               name={'price'}
-                               value={image}
-                               change={setImage}
-                        />
+                        <label className='login-input-file-label'>
+                            Select Image <br/>
+                            <input onChange={uploadImage}
+                                type="file"
+                                   name='image'
+                                   className='login-input-file'/>
+                        </label>
                         <Input type={'text'}
                                placeholder={'price'}
                                name={'price'}
                                value={price}
                                change={setPrice}
                         />
-                        <button onClick={e => setIsSubmit(true)}
-                                type='submit'
+                        <button onClick={productSubmitHandler}
+                            type='submit'
                                 name='submit'
                                 className='login-submit'>
                             Submit
