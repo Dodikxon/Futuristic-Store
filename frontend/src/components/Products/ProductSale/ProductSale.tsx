@@ -11,7 +11,18 @@ function Input (props: any){
                   value={props.value}
                   placeholder={props.placeholder}
                   onChange={e => props.change(e.target.value)}
-                  name={props.name}/>
+                  name={props.name} required/>
+}
+
+function Selector(props: any){
+    return <div className='selector'>
+                <label className='login-selector-label'>{props.placeholder}</label>
+                <select required value={props.selectorValue} onChange={e => props.change(e.target.value)} name={props.name} className='login-selector'>
+                    <option value={props.value}>{props.value}</option>
+                    <option value={props.value1}>{props.value1}</option>
+                    <option value={props.value2}>{props.value2}</option>
+                </select>
+            </div>
 }
 
 function Textarea (props: any){
@@ -55,59 +66,119 @@ const ProductSale = () => {
             }, 500);
             }
 
-        return (
-            <section className='login'>
-                <h1 className='login-title'>Sale</h1>
-                <div className="container">
-                    <div className="login-form">
-                        <Input type={'text'}
-                               placeholder={'title'}
-                               name={'title'}
-                               value={title}
-                               change={setTitle}
-                        />
-                        <Textarea
-                               placeholder={'description'}
-                               name={'description'}
-                               value={description}
-                               change={setDescription}
-                        />
-                        <Input type={'text'}
-                               placeholder={'rating'}
-                               name={'rating'}
-                               value={rating}
-                               change={setRating}
-                        />
-                        <Input type={'text'}
-                               placeholder={'game'}
-                               name={'game'}
-                               value={game}
-                               change={setGame}
-                        />
-                        <p className='sale-userid'>You`re ID: {userId}</p>
-                        <label className='login-input-file-label'>
-                            Select Image <br/>
-                            <input onChange={uploadImage}
-                                type="file"
-                                   name='image'
-                                   className='login-input-file'/>
-                        </label>
-                        <Input type={'text'}
-                               placeholder={'price'}
-                               name={'price'}
-                               value={price}
-                               change={setPrice}
-                        />
-                        <button onClick={productSubmitHandler}
-                            type='submit'
-                                name='submit'
-                                className='login-submit'>
-                            Submit
-                        </button>
-                    </div>
-                </div>
-            </section>
-        );
+            if(image){
+                return (
+                    <section className='login'>
+                        <h1 className='login-title'>Sale</h1>
+                        <div className="container">
+                            <div className="login-form">
+                                <Input type={'text'}
+                                       placeholder={'title'}
+                                       name={'title'}
+                                       value={title}
+                                       change={setTitle}
+                                />
+                                <Textarea
+                                    placeholder={'description'}
+                                    name={'description'}
+                                    value={description}
+                                    change={setDescription}
+                                />
+                                <Input type={'text'}
+                                       placeholder={'rating'}
+                                       name={'rating'}
+                                       value={rating}
+                                       change={setRating}
+                                />
+                                <Selector
+                                    selectorValue={game}
+                                    change={setGame}
+                                    value1={'Dota 2'}
+                                    value2={'LOL'}
+                                    name={'game'}
+                                    placeholder={'Select game'}
+
+                                />
+                                <label className='login-input-file-label'>
+                                    {image.name} <br/>
+                                    <input onChange={uploadImage}
+                                           type="file"
+                                           name='image'
+                                           className='login-input-file'/>
+                                </label>
+                                <Input type={'text'}
+                                       placeholder={'price'}
+                                       name={'price'}
+                                       value={price}
+                                       change={setPrice}
+                                />
+                                <button onClick={productSubmitHandler}
+                                        type='submit'
+                                        name='submit'
+                                        className='login-submit'>
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                );
+            }else{
+                return (
+                    <section className='login'>
+                        <h1 className='login-title'>Sale</h1>
+                        <div className="container">
+                            <div className="login-form">
+                                <Input type={'text'}
+                                       placeholder={'title'}
+                                       name={'title'}
+                                       value={title}
+                                       change={setTitle}
+                                />
+                                <Textarea
+                                    placeholder={'description'}
+                                    name={'description'}
+                                    value={description}
+                                    change={setDescription}
+                                />
+                                <Input type={'text'}
+                                       placeholder={'rating'}
+                                       name={'rating'}
+                                       value={rating}
+                                       change={setRating}
+                                />
+                                <Selector
+                                    selectorValue={game}
+                                    change={setGame}
+                                    value1={'Dota 2'}
+                                    value2={'LOL'}
+                                    name={'game'}
+                                    placeholder={'Select game'}
+
+                                />
+                                <label className='login-input-file-label'>
+                                    Select image <br/>
+                                    <input onChange={uploadImage}
+                                           type="file"
+                                           name='image'
+                                           className='login-input-file'/>
+                                </label>
+                                <Input type={'text'}
+                                       placeholder={'price'}
+                                       name={'price'}
+                                       value={price}
+                                       change={setPrice}
+                                />
+                                <button onClick={productSubmitHandler}
+                                        type='submit'
+                                        name='submit'
+                                        className='login-submit'>
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                );
+            }
     }
     return (
         <section className='login'>

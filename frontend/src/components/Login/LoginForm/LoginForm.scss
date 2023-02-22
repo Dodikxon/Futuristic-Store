@@ -20,6 +20,39 @@
     margin: 0 auto;
   }
 
+  .selector{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  &-selector{
+    width: 50%;
+    height: 50px;
+    text-align: center;
+    font-size: 25px;
+    margin: 15px 0 0 0;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-label{
+      width: 50%;
+      height: 50px;
+      text-align: center;
+      font-size: 25px;
+      font-weight: 400;
+      color: #F2F0D5;
+      display: flex;
+      margin: 15px 0 0 0;
+      justify-content: center;
+      align-items: center;
+
+    }
+  }
+
   &-input{
     height: 50px;
     width: 100%;
@@ -45,6 +78,8 @@
         transition: all 0.5s ease;
         width: 100%;
         border: 1px dashed #F2F0D5;
+        overflow: hidden;
+        margin: 15px 0 0 0;
         &:hover{
           font-weight: 700;
           font-size: 30px;

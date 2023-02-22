@@ -13,10 +13,6 @@ function Title(props: any){
     return <Link to={props.detail} className="product-title">{props.title}</Link>
 }
 
-function Description(props: any){
-    return <p className="product-description">{props.description}</p>
-}
-
 function Rating(props: any){
     return <p className="product-price">{props.rating}</p>
 }
@@ -35,7 +31,6 @@ const Product = (props: any) => {
             <div className="product-text">
                 <Image src={`http://localhost:5000/products/${props.productSrc}`} alt={props.productAlt}/>
                 <Title detail={props.productDetail} title={props.productTitle}/>
-                <Description description={props.productDescription}/>
                 <Rating rating={props.productRating}/>
                 <Price price={props.productPrice} />
                 <Button name={'buy'} link={'/basket'} />
@@ -56,7 +51,7 @@ const ProductList = () => {
                 <div className="container">
                     <div className="articles-in">
                         <div className="articles-in-title">
-                            <h1 className="articles-in-title-text">
+                            <h1  className="articles-in-title-text">
                                 Loading...
                             </h1>
                         </div>
@@ -89,7 +84,6 @@ const ProductList = () => {
                         productSrc={`${product.image}`}
                         productAlt={product.game}
                         productTitle={product.title}
-                        productDescription={product.description}
                         productRating={product.rating}
                         productPrice={product.price + 'RUB'}
                     />
