@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Products } from './products.model';
 import { CreateProductDto } from './dto/create-product.dto';
-import * as path from 'path';
+import { Between } from 'typeorm';
 
 @Injectable()
 export class ProductsService {
@@ -19,6 +19,14 @@ export class ProductsService {
 
   async allProducts() {
     const product = await this.productRepository.findAll({
+      include: { all: true },
+    });
+    return product;
+  }
+
+  async getProductByGame(game: string) {
+    const product = await this.productRepository.findAll({
+      where: { game },
       include: { all: true },
     });
     return product;

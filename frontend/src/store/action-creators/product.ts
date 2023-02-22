@@ -5,7 +5,7 @@ import {ProductAction, ProductActionTypes} from "../../types/product";
 const api = 'http://localhost:5000/'
 
 const ERROR = "Error products not load"
-export const createProduct = (title: string, description: string, rating: string, game: string, userId: number, image: FormData, price: number | undefined) =>{
+export const createProduct = (title: string, description: string, rating: string, game: string, userId: number, image: FormData, price: number | string) =>{
     const response = axios.post(`${api}products/create`, {
         title: title,
         description: description,

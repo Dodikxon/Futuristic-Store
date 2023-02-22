@@ -40,7 +40,7 @@ const ProductSale = () => {
     const [description, setDescription] = useState('')
     const [rating, setRating] = useState('')
     const [game, setGame] = useState('')
-    const [price, setPrice] = useState(undefined)
+    const [price, setPrice] = useState('')
     const [image, setImage] = useState<any>()
     const [userId, setUserId] = useState<number>(0)
     const token = localStorage.getItem('token')
@@ -51,11 +51,19 @@ const ProductSale = () => {
                     setUserId(response.data.token.id)
                 })
         }
+        const priceChange = (e:any) => {
+            const regex = /^[0-9\b]+$/;
+            if (e.target.value === "" || regex.test(e.target.value)) {
+                setPrice(e.target.value);
+            }
+        };
+
         tokenDecode(token)
         const uploadImage = (event: any) => {
             console.log(event.target.files[0])
             setImage(event.target.files[0]);
         };
+
         const productSubmitHandler = (event: any) => {
             event.preventDefault();
             const formData = new FormData();
@@ -106,11 +114,12 @@ const ProductSale = () => {
                                            name='image'
                                            className='login-input-file'/>
                                 </label>
-                                <Input type={'text'}
+                                <input className='login-input'
+                                       type={'number'}
                                        placeholder={'price'}
                                        name={'price'}
                                        value={price}
-                                       change={setPrice}
+                                       onChange={priceChange}
                                 />
                                 <button onClick={productSubmitHandler}
                                         type='submit'
@@ -162,11 +171,12 @@ const ProductSale = () => {
                                            name='image'
                                            className='login-input-file'/>
                                 </label>
-                                <Input type={'text'}
+                                <input className='login-input'
+                                    type={'number'}
                                        placeholder={'price'}
                                        name={'price'}
                                        value={price}
-                                       change={setPrice}
+                                       onChange={priceChange}
                                 />
                                 <button onClick={productSubmitHandler}
                                         type='submit'

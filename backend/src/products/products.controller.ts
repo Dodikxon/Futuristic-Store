@@ -1,8 +1,10 @@
 import {
   Body,
   Controller,
-  Get, Param,
-  Post, Res,
+  Get,
+  Param,
+  Post,
+  Res,
   UploadedFile,
   UseGuards,
   UseInterceptors,
@@ -18,6 +20,11 @@ import { Products } from './products.model';
 @Controller('products')
 export class ProductsController {
   constructor(private productService: ProductsService) {}
+
+  @Get('game/:game')
+  async getProductsByGame(@Param('game') game: string) {
+    return this.productService.getProductByGame(game);
+  }
 
   @UseGuards(JwtAuthGuard)
   @Post('/create')

@@ -81,7 +81,7 @@ const ProductList = () => {
                 {products.map( product =>
                     <Product
                         productDetail={product.id}
-                        productSrc={`${product.image}`}
+                        productSrc={product.image}
                         productAlt={product.game}
                         productTitle={product.title}
                         productRating={product.rating}
