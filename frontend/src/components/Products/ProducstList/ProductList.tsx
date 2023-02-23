@@ -1,12 +1,22 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import './ProductsList.scss';
 import {Link} from "react-router-dom";
 import {useTypedSelector} from "../../../hooks/useTypedSelector";
 import {useActions} from "../../../hooks/useActions";
-import {fetchProducts} from "../../../store/action-creators/product";
+import {fetchProducts, fetchProductsByGame} from "../../../store/action-creators/product";
 
 function Button(props: any){
     return <Link to={props.link} className="product-btn">{props.name}</Link>
+}
+
+function Selector(props: any){
+    return <div className='filter-selector'>
+        <select required value={props.selectorValue} onChange={e => props.change(e.target.value)} name={props.name} className='filter-selector-input'>
+            <option value={props.value}>{props.value}</option>
+            <option value={props.value1}>{props.value1}</option>
+            <option value={props.value2}>{props.value2}</option>
+        </select>
+    </div>
 }
 
 function Title(props: any){
@@ -41,9 +51,14 @@ const Product = (props: any) => {
 
 const ProductList = () => {
     const {products, error, loading} = useTypedSelector(state => state.product)
+    const [game, setGame] = useState('')
     const { fetchProducts } = useActions()
     useEffect(() =>{
-        fetchProducts()
+        if(game){
+            fetchProductsByGame(game)
+        }else{
+            fetchProducts()
+        }
     }, [])
     if(loading){
         return (
@@ -78,16 +93,32 @@ const ProductList = () => {
     return (
         <section className='productList'>
             <div className="container">
-                {products.map( product =>
-                    <Product
-                        productDetail={product.id}
-                        productSrc={product.image}
-                        productAlt={product.game}
-                        productTitle={product.title}
-                        productRating={product.rating}
-                        productPrice={product.price + 'RUB'}
-                    />
-                )}
+                <div className="productList-in">
+                    <div className="productList-in-top">
+                        <div className='filter'>
+                            <Selector value1={'Dota 2'} value={'select game'}
+                                      name={'game'}
+                                      change={setGame}
+                                      selectorValue={game}
+                                      value2={'LOL'}/>
+                            <button type='submit'
+                                    name='submit'
+                                    className='filter-submit'>Submit</button>
+                        </div>
+                    </div>
+                    <div className="productList-in-bottom">
+                        {products.map( product =>
+                            <Product
+                                productDetail={product.id}
+                                productSrc={product.image}
+                                productAlt={product.game}
+                                productTitle={product.title}
+                                productRating={product.rating}
+                                productPrice={product.price + 'RUB'}
+                            />
+                        )}
+                    </div>
+                </div>
             </div>
         </section>
     );

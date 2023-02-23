@@ -3,35 +3,11 @@ import axios from "axios";
 import './ProductSale.scss';
 import {createProduct} from "../../../store/action-creators/product";
 import { useNavigate } from 'react-router-dom';
+import Input from "../../Inputs/Input";
+import Textarea from "../../Inputs/Textarea";
+import Selector from "../../Inputs/Selector";
+import Upload from "../../Inputs/Upload";
 const api = 'http://localhost:5000';
-
-function Input (props: any){
-    return <input type={props.type}
-                  className='login-input'
-                  value={props.value}
-                  placeholder={props.placeholder}
-                  onChange={e => props.change(e.target.value)}
-                  name={props.name} required/>
-}
-
-function Selector(props: any){
-    return <div className='selector'>
-                <label className='login-selector-label'>{props.placeholder}</label>
-                <select required value={props.selectorValue} onChange={e => props.change(e.target.value)} name={props.name} className='login-selector'>
-                    <option value={props.value}>{props.value}</option>
-                    <option value={props.value1}>{props.value1}</option>
-                    <option value={props.value2}>{props.value2}</option>
-                </select>
-            </div>
-}
-
-function Textarea (props: any){
-    return <textarea className='login-textarea'
-                     value={props.value}
-                     placeholder={props.placeholder}
-                     onChange={e => props.change(e.target.value)}
-                     name={props.name}/>
-}
 
 
 const ProductSale = () => {
@@ -51,16 +27,9 @@ const ProductSale = () => {
                     setUserId(response.data.token.id)
                 })
         }
-        const priceChange = (e:any) => {
-            const regex = /^[0-9\b]+$/;
-            if (e.target.value === "" || regex.test(e.target.value)) {
-                setPrice(e.target.value);
-            }
-        };
 
         tokenDecode(token)
         const uploadImage = (event: any) => {
-            console.log(event.target.files[0])
             setImage(event.target.files[0]);
         };
 
@@ -107,19 +76,14 @@ const ProductSale = () => {
                                     placeholder={'Select game'}
 
                                 />
-                                <label className='login-input-file-label'>
-                                    {image.name} <br/>
-                                    <input onChange={uploadImage}
-                                           type="file"
-                                           name='image'
-                                           className='login-input-file'/>
-                                </label>
-                                <input className='login-input'
+                                <Upload change={uploadImage}
+                                        placeholder={image.name}/>
+                                <Input
                                        type={'number'}
                                        placeholder={'price'}
                                        name={'price'}
                                        value={price}
-                                       onChange={priceChange}
+                                       change={setPrice}
                                 />
                                 <button onClick={productSubmitHandler}
                                         type='submit'
@@ -164,19 +128,14 @@ const ProductSale = () => {
                                     placeholder={'Select game'}
 
                                 />
-                                <label className='login-input-file-label'>
-                                    Select image <br/>
-                                    <input onChange={uploadImage}
-                                           type="file"
-                                           name='image'
-                                           className='login-input-file'/>
-                                </label>
-                                <input className='login-input'
+                                <Upload change={uploadImage}
+                                        placeholder={'Select image'}/>
+                                <Input
                                     type={'number'}
-                                       placeholder={'price'}
-                                       name={'price'}
-                                       value={price}
-                                       onChange={priceChange}
+                                    placeholder={'price'}
+                                    name={'price'}
+                                    value={price}
+                                    change={setPrice}
                                 />
                                 <button onClick={productSubmitHandler}
                                         type='submit'

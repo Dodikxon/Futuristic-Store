@@ -1,38 +1,18 @@
 import React, {useState} from 'react';
 import './RegisterForm.scss';
-import { useNavigate } from 'react-router-dom';
 import {register} from "../../../store/action-creators/user";
 import {useCookies} from "react-cookie";
-
-
-function Input(props: any){
-    return <input type={props.type}
-                  className='login-input'
-                  value={props.value}
-                  placeholder={props.placeholder}
-                  onChange={e => props.change(e.target.value)}
-                  name={props.name}/>
-}
+import Input from "../../Inputs/Input";
+import Submit from "../../Inputs/Submit";
 
 
 const RegisterForm = () => {
     const [emailCookie, setEmailCookie] = useCookies(['email']);
     const [passwordCookie, setPasswordCookie] = useCookies(['password']);
-    const [usernameCookie, setUsernameCookie] = useCookies(['username']);
-    const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [username, setUsername] = useState('')
     const [isRegister, setIsRegister] = useState(false)
-    if(isRegister){
-        register(email, username, password)
-        setEmailCookie('email', email)
-        setPasswordCookie('password', password)
-        setUsernameCookie('username', username)
-        setTimeout( () => {
-            navigate('/');
-        }, 500);
-    }
     return (
         <section className='login'>
             <h1 className='login-title'>Register</h1>
@@ -56,12 +36,15 @@ const RegisterForm = () => {
                            value={password}
                            change={setPassword}
                     />
-                    <button onClick={e => setIsRegister(true)}
-                        type='submit'
-                        name='submit'
-                        className='login-submit'>
-                        Register
-                    </button>
+                    <Submit change={setIsRegister}
+                            email={email}
+                            password={password}
+                            username={username}
+                            emailCookie={setEmailCookie}
+                            passwordCookie={setPasswordCookie}
+                            navigate={'/'}
+                            action={register}
+                            value={isRegister} />
                 </div>
             </div>
         </section>

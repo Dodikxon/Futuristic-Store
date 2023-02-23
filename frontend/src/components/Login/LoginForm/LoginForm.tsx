@@ -1,34 +1,17 @@
 import React, {useState} from 'react';
 import './LoginForm.scss';
 import {login} from "../../../store/action-creators/user";
-import { useNavigate } from 'react-router-dom';
 import {useCookies} from "react-cookie";
-
-function Input(props: any){
-    return <input type={props.type}
-                  className='login-input'
-                  value={props.value}
-                  placeholder={props.placeholder}
-                  onChange={e => props.change(e.target.value)}
-                  name={props.name}/>
-}
+import Input from "../../Inputs/Input";
+import Submit from "../../Inputs/Submit";
 
 
 const LoginForm = () => {
     const [emailCookie, setEmailCookie] = useCookies(['email']);
     const [passwordCookie, setPasswordCookie] = useCookies(['password']);
-    const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [isSubmit, setIsSubmit] = useState(false)
-    if (isSubmit){
-        login(email, password);
-        setEmailCookie("email", email)
-        setPasswordCookie("password", password)
-        setTimeout( () => {
-            navigate('/');
-            }, 500);
-    }
     return (
         <section className='login'>
             <h1 className='login-title'>Login</h1>
@@ -46,12 +29,14 @@ const LoginForm = () => {
                            value={password}
                            change={setPassword}
                     />
-                    <button onClick={e => setIsSubmit(true)}
-                        type='submit'
-                        name='submit'
-                        className='login-submit'>
-                        Login
-                    </button>
+                    <Submit change={setIsSubmit}
+                            emailCookie={setEmailCookie}
+                            passwordCookie={setPasswordCookie}
+                            action={login}
+                            email={email}
+                            password={password}
+                            value={isSubmit}
+                            navigate={'/'}/>
                 </div>
             </div>
         </section>
