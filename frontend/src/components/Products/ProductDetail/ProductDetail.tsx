@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
+import './ProductDetail.scss';
 import {api} from "../../../api/api";
 import Title from "../../Title/Title";
 
@@ -28,14 +29,28 @@ const ProductDetail = () => {
         fetchProductByTitle()
     }, [])
     return (
-        <section className='login'>
-            <Title title={title}/>
-            <Title title={description}/>
-            <Title title={rating}/>
-            <Title title={game}/>
-            <Title title={username}/>
-            <img src={`${api}/products/${image}`} alt={game}/>
-            <Title title={price}/>
+        <section className='detail'>
+            <div className="container">
+                <div className="detail-in">
+                    <Title title={title}/>
+                    <div className="detail-in-left">
+                        <div className="detail-in-left-bottom">
+                            <img src={`${api}/products/${image}`}
+                                 className='detail-in-left-bottom-img'
+                                 alt={game}/>
+                            <p className="detail-in-left-bottom-desc">
+                                {description} <br/>
+                                <br/>
+                                Rating: {rating} <br/>
+                                Game: {game} <br/>
+                                Seller: {username} <br/>
+                                Price: {price} RUB
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </section>
     );
 };

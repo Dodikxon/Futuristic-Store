@@ -1,0 +1,31 @@
+.detail{
+
+  &-in{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &-left{
+      margin: 0 auto;
+      text-align: center;
+      &-bottom{
+        margin: 50px 0 0 0;
+        display: flex;
+        flex-wrap: wrap;
+        &-img{
+          float: left;
+          width: 45%;
+          margin: 0 30px 0 0;
+        }
+        &-desc{
+          font-size: 40px;
+          color: #F2F0D5;
+          width: 50%;
+          text-align: left;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}
+
