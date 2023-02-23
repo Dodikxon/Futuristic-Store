@@ -17,11 +17,7 @@ const ProductList = () => {
     const [isSubmit, setIsSubmit] = useState(false)
     useEffect(() =>{
         if(game){
-            if(game === 'select game'){
-                fetchProducts()
-            }else{
-                fetchProductsByGame(game)
-            }
+            fetchProductsByGame(game)
         }else{
             fetchProducts()
         }
@@ -76,7 +72,7 @@ const ProductList = () => {
                     <div className="productList-in-bottom">
                         {products.map( product =>
                             <Product
-                                productDetail={product.id}
+                                productDetail={product.title}
                                 productSrc={product.image}
                                 productAlt={product.game}
                                 productTitle={product.title}

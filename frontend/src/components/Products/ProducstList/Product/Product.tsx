@@ -1,14 +1,23 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import './Product.scss';
+import {api} from "../../../../api/api";
 
 function Button(props: any){
     return <Link to={props.link} className="product-btn">{props.name}</Link>
 }
 
+
+
 function Title(props: any){
-    return <Link to={props.detail} className="product-title">{props.title}</Link>
+    function getDetailLink(){
+        let page = props.detail
+        let link = localStorage.setItem('detailPage', page)
+        return link
+    }
+    return <Link to={props.detail} onClick={getDetailLink} className="product-title">{props.title}</Link>
 }
+
 
 function Rating(props: any){
     return <p className="product-price">{props.rating}</p>
@@ -23,10 +32,11 @@ function Image(props: any){
 }
 
 const Product = (props: any) => {
+
     return (
         <div className="product">
             <div className="product-text">
-                <Image src={`http://localhost:5000/products/${props.productSrc}`} alt={props.productAlt}/>
+                <Image src={`${api}/products/${props.productSrc}`} alt={props.productAlt}/>
                 <Title detail={props.productDetail} title={props.productTitle}/>
                 <Rating rating={props.productRating}/>
                 <Price price={props.productPrice} />

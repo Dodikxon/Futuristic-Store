@@ -55,3 +55,18 @@ export const fetchProductsByGame = (game: string) => {
         }
     }
 }
+
+export const fetchProductByTitle = (title: string | null) => {
+    return async (dispath: Dispatch<ProductAction>) => {
+        try {
+            dispath({type: ProductActionTypes.FETCH_PRODUCTS})
+            const response = await axios.get(`${api}/products/product/${title}`)
+            setTimeout(() => {
+                dispath({type: ProductActionTypes.FETCH_PRODUCTS_SUCCESS, payload: response.data})
+            }, 500)
+
+        }catch (e){
+            dispath({type: ProductActionTypes.FETCH_PRODUCTS_ERROR, payload: ERROR})
+        }
+    }
+}

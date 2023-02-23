@@ -26,6 +26,11 @@ export class ProductsController {
     return this.productService.getProductByGame(game);
   }
 
+  @Get('product/:title')
+  async getProductByTitle(@Param('title') title: string) {
+    return this.productService.getProductByTitle(title);
+  }
+
   @UseGuards(JwtAuthGuard)
   @Post('/create')
   @UseInterceptors(

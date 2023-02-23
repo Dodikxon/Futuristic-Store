@@ -7,6 +7,7 @@ import Register from "./pages/Register/Register";
 import {useCookies} from "react-cookie";
 import {tokenUpdate} from "./store/action-creators/user";
 import Sale from "./pages/Sale/Sale";
+import Product from "./pages/Product/Product";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path={'/login'} element={<Login/>}/>
             <Route path={'/register'} element={<Register/>}/>
             <Route path={'/sale'} element={<Sale/>}/>
+            <Route path={'/:productTitle'} element={<Product/>}/>
         </Routes>
     );
 }

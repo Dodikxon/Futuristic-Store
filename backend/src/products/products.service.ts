@@ -24,6 +24,14 @@ export class ProductsService {
     return product;
   }
 
+  async getProductByTitle(title: string) {
+    const product = await this.productRepository.findOne({
+      where: { title },
+      include: { all: true },
+    });
+    return product;
+  }
+
   async getProductByGame(game: string) {
     if (game == 'select game') {
       const product = await this.productRepository.findAll({
