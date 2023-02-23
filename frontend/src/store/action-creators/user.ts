@@ -1,12 +1,11 @@
 import axios from "axios";
-import exp from "constants";
+import {api} from "../../api/api";
 
-const api = 'http://localhost:5000/'
 
 export const register = (email: string, username: string, password: string) =>{
-    const response = axios.post(`${api}auth/registration`, {
-        username: username,
+    const response = axios.post(`${api}/auth/registration`, {
         email: email,
+        username: username,
         password: password,
     })
         .then((response) => {
@@ -18,7 +17,7 @@ export const register = (email: string, username: string, password: string) =>{
 }
 
 export const login = (email: string, password: string) => {
-    const response = axios.post(`${api}auth/login`,{
+    const response = axios.post(`${api}/auth/login`,{
         email: email,
         password: password,
     })
@@ -31,7 +30,7 @@ export const login = (email: string, password: string) => {
 }
 
 export const tokenUpdate = (email: string, password: string) => {
-    const response = axios.post(`${api}auth/login`,{
+    const response = axios.post(`${api}/auth/login`,{
         email: email,
         password: password,
     })

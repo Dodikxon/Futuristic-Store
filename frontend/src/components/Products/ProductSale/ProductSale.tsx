@@ -7,7 +7,7 @@ import Input from "../../Inputs/Input";
 import Textarea from "../../Inputs/Textarea";
 import Selector from "../../Inputs/Selector";
 import Upload from "../../Inputs/Upload";
-const api = 'http://localhost:5000';
+import {api} from "../../../api/api"
 
 
 const ProductSale = () => {

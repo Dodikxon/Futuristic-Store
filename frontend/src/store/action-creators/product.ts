@@ -1,12 +1,12 @@
 import axios from "axios";
 import {Dispatch} from "redux";
 import {ProductAction, ProductActionTypes} from "../../types/product";
+import {api} from "../../api/api";
 
-const api = 'http://localhost:5000/'
 
 const ERROR = "Error products not load"
 export const createProduct = (title: string, description: string, rating: string, game: string, userId: number, image: FormData, price: number | string) =>{
-    const response = axios.post(`${api}products/create`, {
+    const response = axios.post(`${api}/products/create`, {
         title: title,
         description: description,
         rating: rating,
@@ -30,7 +30,7 @@ export const fetchProducts = () => {
     return async (dispath: Dispatch<ProductAction>) => {
         try {
             dispath({type: ProductActionTypes.FETCH_PRODUCTS})
-            const response = await axios.get(`${api}products`)
+            const response = await axios.get(`${api}/products`)
             setTimeout(() => {
                 dispath({type: ProductActionTypes.FETCH_PRODUCTS_SUCCESS, payload: response.data})
             }, 500)
@@ -45,7 +45,7 @@ export const fetchProductsByGame = (game: string) => {
     return async (dispath: Dispatch<ProductAction>) => {
         try {
             dispath({type: ProductActionTypes.FETCH_PRODUCTS})
-            const response = await axios.get(`${api}products/game/${game}`)
+            const response = await axios.get(`${api}/products/game/${game}`)
             setTimeout(() => {
                 dispath({type: ProductActionTypes.FETCH_PRODUCTS_SUCCESS, payload: response.data})
             }, 500)

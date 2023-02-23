@@ -7,7 +7,7 @@ const Submit = (props: any) => {
     const navigate = useNavigate()
     props.change(false)
     if (props.value === true){
-        props.action(props.email, props.password, props.username)
+        props.action(props.email, props.username , props.password)
         props.emailCookie("email", props.email)
         props.passwordCookie("password", props.password)
         setTimeout( () => {
