@@ -7,10 +7,12 @@ import Input from "../../Inputs/Input";
 import Textarea from "../../Inputs/Textarea";
 import Selector from "../../Inputs/Selector";
 import Upload from "../../Inputs/Upload";
-import {api} from "../../../api/api"
+import {api, token} from "../../../api/api"
+import Title from "../../Title/Title";
 
 
 const ProductSale = () => {
+    let accessToken = token()
     const navigate = useNavigate()
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
@@ -19,8 +21,7 @@ const ProductSale = () => {
     const [price, setPrice] = useState('')
     const [image, setImage] = useState<any>()
     const [userId, setUserId] = useState<number>(0)
-    const token = localStorage.getItem('token')
-    if(token){
+    if(accessToken){
         const tokenDecode = (token: string ) => {
             const response = axios.get(`${api}/auth/${token}`)
                 .then((response) => {
@@ -28,7 +29,7 @@ const ProductSale = () => {
                 })
         }
 
-        tokenDecode(token)
+        tokenDecode(accessToken)
         const uploadImage = (event: any) => {
             setImage(event.target.files[0]);
         };
@@ -46,7 +47,7 @@ const ProductSale = () => {
             if(image){
                 return (
                     <section className='login'>
-                        <h1 className='login-title'>Sale</h1>
+                        <Title title={'Sale'}/>
                         <div className="container">
                             <div className="login-form">
                                 <Input type={'text'}
@@ -98,7 +99,7 @@ const ProductSale = () => {
             }else{
                 return (
                     <section className='login'>
-                        <h1 className='login-title'>Sale</h1>
+                        <Title title={'Sale'}/>
                         <div className="container">
                             <div className="login-form">
                                 <Input type={'text'}

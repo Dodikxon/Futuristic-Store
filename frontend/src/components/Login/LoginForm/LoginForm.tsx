@@ -4,6 +4,7 @@ import {login} from "../../../store/action-creators/user";
 import {useCookies} from "react-cookie";
 import Input from "../../Inputs/Input";
 import Submit from "../../Inputs/Submit";
+import Title from "../../Title/Title";
 
 
 const LoginForm = () => {
@@ -14,7 +15,7 @@ const LoginForm = () => {
     const [isSubmit, setIsSubmit] = useState(false)
     return (
         <section className='login'>
-            <h1 className='login-title'>Login</h1>
+            <Title title={'Login'} />
             <div className="container">
                 <div className="login-form">
                     <Input type={'text'}

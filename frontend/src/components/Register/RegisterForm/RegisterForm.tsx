@@ -4,6 +4,7 @@ import {register} from "../../../store/action-creators/user";
 import {useCookies} from "react-cookie";
 import Input from "../../Inputs/Input";
 import Submit from "../../Inputs/Submit";
+import Title from "../../Title/Title";
 
 
 const RegisterForm = () => {
@@ -15,7 +16,7 @@ const RegisterForm = () => {
     const [isRegister, setIsRegister] = useState(false)
     return (
         <section className='login'>
-            <h1 className='login-title'>Register</h1>
+            <Title title={'Registration'}/>
             <div className="container">
                 <div className="login-form">
                     <Input type={'text'}

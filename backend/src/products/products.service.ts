@@ -25,10 +25,17 @@ export class ProductsService {
   }
 
   async getProductByGame(game: string) {
-    const product = await this.productRepository.findAll({
-      where: { game },
-      include: { all: true },
-    });
-    return product;
+    if (game == 'select game') {
+      const product = await this.productRepository.findAll({
+        include: { all: true },
+      });
+      return product;
+    } else {
+      const product = await this.productRepository.findAll({
+        where: { game },
+        include: { all: true },
+      });
+      return product;
+    }
   }
 }

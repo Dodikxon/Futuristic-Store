@@ -4,19 +4,11 @@ import {Link} from "react-router-dom";
 import {useTypedSelector} from "../../../hooks/useTypedSelector";
 import {useActions} from "../../../hooks/useActions";
 import {fetchProducts, fetchProductsByGame} from "../../../store/action-creators/product";
+import Selector from "../../Inputs/Selector";
+import Submit from "../../Inputs/Submit";
 
 function Button(props: any){
     return <Link to={props.link} className="product-btn">{props.name}</Link>
-}
-
-function Selector(props: any){
-    return <div className='filter-selector'>
-        <select required value={props.selectorValue} onChange={e => props.change(e.target.value)} name={props.name} className='filter-selector-input'>
-            <option value={props.value}>{props.value}</option>
-            <option value={props.value1}>{props.value1}</option>
-            <option value={props.value2}>{props.value2}</option>
-        </select>
-    </div>
 }
 
 function Title(props: any){
@@ -53,9 +45,15 @@ const ProductList = () => {
     const {products, error, loading} = useTypedSelector(state => state.product)
     const [game, setGame] = useState('')
     const { fetchProducts } = useActions()
+    const { fetchProductsByGame } = useActions()
+    const [isSubmit, setIsSubmit] = useState(false)
     useEffect(() =>{
         if(game){
-            fetchProductsByGame(game)
+            if(game === 'select game'){
+                fetchProducts()
+            }else{
+                fetchProductsByGame(game)
+            }
         }else{
             fetchProducts()
         }
@@ -101,9 +99,10 @@ const ProductList = () => {
                                       change={setGame}
                                       selectorValue={game}
                                       value2={'LOL'}/>
-                            <button type='submit'
-                                    name='submit'
-                                    className='filter-submit'>Submit</button>
+                            <Submit value={isSubmit}
+                                    change={setIsSubmit}
+                                    action={fetchProductsByGame}
+                                    email={game}/>
                         </div>
                     </div>
                     <div className="productList-in-bottom">
