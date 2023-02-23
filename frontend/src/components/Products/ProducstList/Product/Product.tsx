@@ -2,18 +2,14 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import './Product.scss';
 import {api} from "../../../../api/api";
-
-function Button(props: any){
-    return <Link to={props.link} className="product-btn">{props.name}</Link>
-}
+import Button from "../../../Inputs/Button";
 
 
 
 function Title(props: any){
     function getDetailLink(){
         let page = props.detail
-        let link = localStorage.setItem('detailPage', page)
-        return link
+        return localStorage.setItem('detailPage', page)
     }
     return <Link to={props.detail} onClick={getDetailLink} className="product-title">{props.title}</Link>
 }
@@ -40,7 +36,7 @@ const Product = (props: any) => {
                 <Title detail={props.productDetail} title={props.productTitle}/>
                 <Rating rating={props.productRating}/>
                 <Price price={props.productPrice} />
-                <Button name={'buy'} link={'/basket'} />
+                <Button name={'buy'} link={`/${props.productDetail}`} />
             </div>
         </div>
     );

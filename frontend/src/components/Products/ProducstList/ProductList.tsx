@@ -6,6 +6,7 @@ import {fetchProducts, fetchProductsByGame} from "../../../store/action-creators
 import Selector from "../../Inputs/Selector";
 import Submit from "../../Inputs/Submit";
 import Product from "./Product/Product";
+import Title from "../../Title/Title";
 
 
 
@@ -28,9 +29,7 @@ const ProductList = () => {
                 <div className="container">
                     <div className="articles-in">
                         <div className="articles-in-title">
-                            <h1  className="articles-in-title-text">
-                                Loading...
-                            </h1>
+                            <Title title={'Loading...'} />
                         </div>
                     </div>
                 </div>
@@ -43,9 +42,7 @@ const ProductList = () => {
                 <div className="container">
                     <div className="articles-in">
                         <div className="articles-in-title">
-                            <h1 className="articles-in-title-text">
-                                {error}
-                            </h1>
+                            <Title title={error} />
                         </div>
                     </div>
                 </div>
@@ -62,6 +59,7 @@ const ProductList = () => {
                                       name={'game'}
                                       change={setGame}
                                       selectorValue={game}
+                                      placeholder={'select game'}
                                       value2={'LOL'}/>
                             <Submit value={isSubmit}
                                     change={setIsSubmit}

@@ -36,7 +36,7 @@ export class ProductsController {
   @UseInterceptors(
     FileInterceptor('image', {
       storage: diskStorage({
-        destination: './dist/uploads/files',
+        destination: './uploads/files',
         filename: (req, file, cb) => {
           const randomName = Array(32)
             .fill(null)
@@ -60,6 +60,6 @@ export class ProductsController {
   }
   @Get('/:filename')
   async getFile(@Param('filename') filename: string, @Res() res: any) {
-    res.sendFile(filename, { root: 'dist/uploads/files' });
+    res.sendFile(filename, { root: './uploads/files' });
   }
 }

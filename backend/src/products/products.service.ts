@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Products } from './products.model';
 import { CreateProductDto } from './dto/create-product.dto';
-import { Between } from 'typeorm';
 
 @Injectable()
 export class ProductsService {
