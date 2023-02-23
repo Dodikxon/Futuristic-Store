@@ -1,45 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import './ProductsList.scss';
-import {Link} from "react-router-dom";
 import {useTypedSelector} from "../../../hooks/useTypedSelector";
 import {useActions} from "../../../hooks/useActions";
 import {fetchProducts, fetchProductsByGame} from "../../../store/action-creators/product";
 import Selector from "../../Inputs/Selector";
 import Submit from "../../Inputs/Submit";
+import Product from "./Product/Product";
 
-function Button(props: any){
-    return <Link to={props.link} className="product-btn">{props.name}</Link>
-}
 
-function Title(props: any){
-    return <Link to={props.detail} className="product-title">{props.title}</Link>
-}
-
-function Rating(props: any){
-    return <p className="product-price">{props.rating}</p>
-}
-
-function Price(props: any){
-    return <h6 className="product-price">{props.price}</h6>
-}
-
-function Image(props: any){
-    return <img src={props.src} alt={props.alt} className="product-image"/>
-}
-
-const Product = (props: any) => {
-    return (
-        <div className="product">
-            <div className="product-text">
-                <Image src={`http://localhost:5000/products/${props.productSrc}`} alt={props.productAlt}/>
-                <Title detail={props.productDetail} title={props.productTitle}/>
-                <Rating rating={props.productRating}/>
-                <Price price={props.productPrice} />
-                <Button name={'buy'} link={'/basket'} />
-            </div>
-        </div>
-    );
-};
 
 const ProductList = () => {
     const {products, error, loading} = useTypedSelector(state => state.product)
