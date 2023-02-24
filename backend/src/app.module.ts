@@ -10,6 +10,9 @@ import { ProductsController } from './products/products.controller';
 import { ProductsModule } from './products/products.module';
 import { Products } from './products/products.model';
 import { MulterModule } from '@nestjs/platform-express';
+import { Chat } from './chat/chat.model';
+import { ChatController } from './chat/chat.controller';
+import {ChatModule} from "./chat/chat.module";
 
 @Module({
   imports: [
@@ -26,14 +29,15 @@ import { MulterModule } from '@nestjs/platform-express';
       username: process.env.POSTGRES_USERNAME || 'postgres',
       password: process.env.POSTGRES_PASSWORD || 'Postgres',
       database: process.env.POSTGRES_DATABASE || 'futuristic-store',
-      models: [User, Products],
+      models: [User, Products, Chat],
       autoLoadModels: true,
     }),
     UsersModule,
     AuthModule,
     ProductsModule,
+    ChatModule,
   ],
-  controllers: [AuthController, ProductsController],
+  controllers: [AuthController, ProductsController, ChatController],
   providers: [AuthService],
 })
 export class AppModule {}

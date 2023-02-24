@@ -1,5 +1,6 @@
 import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
 import { Products } from '../products/products.model';
+import { Chat } from '../chat/chat.model';
 
 interface UserCreationAttrs {
   username: string;
@@ -36,4 +37,7 @@ export class User extends Model<User, UserCreationAttrs> {
 
   @HasMany(() => Products)
   products: Products[];
+
+  @HasMany(() => Chat)
+  chat: Chat[];
 }
