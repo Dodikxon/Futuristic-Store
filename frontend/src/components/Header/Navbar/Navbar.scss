@@ -1,10 +1,30 @@
-.header-navbar{
+.header-navbar-desktop{
   display: flex;
-  border-bottom: 1px solid #F2F0D5;
   height: 50px;
-  border-radius: 10px;
   justify-content: center;
   align-items: center;
-  width: 30%;
+  width: 100%;
+}
+.header-navbar-mobile{
+  display: none;
+}
+.navbar-close{
+  display: none;
+}
+
+.navbar-open{
+  display: block;
+}
+
+@media (max-width: 520px) {
+  .header-navbar-desktop{
+    display: none;
+  }
+  .header-navbar-mobile{
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 20px;
+  }
 }
 
