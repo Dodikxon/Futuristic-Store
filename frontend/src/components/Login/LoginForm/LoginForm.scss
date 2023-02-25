@@ -1,3 +1,4 @@
+@import "./src/index";
 .login{
   display: flex;
   justify-content: center;
@@ -20,20 +21,23 @@
       display: none;
       &-label{
         cursor: pointer;
-        color: #F2F0D5;
         height: 100px;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 25px;
+        font-size: $font-size;
         transition: all 0.5s ease;
         width: 100%;
-        border: 1px dashed #F2F0D5;
         overflow: hidden;
         margin: 15px 0 0 0;
+        color: $color2;
+        background: $background;
+        border: 1px dashed $color3;
+        border-radius: 5px;
+        font-weight: 700;
+        text-shadow: $font-border;
         &:hover{
-          font-weight: 700;
-          font-size: 30px;
+          font-size: $font-size-hover;
           transition: all 0.5s ease;
         }
       }

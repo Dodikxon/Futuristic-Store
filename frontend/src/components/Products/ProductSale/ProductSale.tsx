@@ -89,7 +89,7 @@ const ProductSale = () => {
                                 <button onClick={productSubmitHandler}
                                         type='submit'
                                         name='submit'
-                                        className='login-submit'>
+                                        className='submit'>
                                     Submit
                                 </button>
                             </div>
@@ -141,7 +141,7 @@ const ProductSale = () => {
                                 <button onClick={productSubmitHandler}
                                         type='submit'
                                         name='submit'
-                                        className='login-submit'>
+                                        className='submit'>
                                     Submit
                                 </button>
                             </div>

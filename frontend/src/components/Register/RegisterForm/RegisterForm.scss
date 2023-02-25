@@ -1,3 +1,4 @@
+@import "./src/index";
 .login{
   display: flex;
   justify-content: center;
@@ -5,12 +6,6 @@
   flex-direction: column;
   margin: 25px 0;
   height: 70vh;
-  &-title{
-    font-weight: 400;
-    font-size: 50px;
-    color: #F2F0D5;
-    text-transform: uppercase;
-  }
   &-form{
     display: flex;
     flex-direction: column;
@@ -53,10 +48,4 @@
     }
 
   }
-}
-
-::placeholder{
-  text-transform: uppercase;
-  color: #0D0D0D;
-  font-weight: 300;
 }

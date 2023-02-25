@@ -39,7 +39,7 @@ const ProductDetail = () => {
                                  className='detail-in-left-bottom-img'
                                  alt={game}/>
                             <p className="detail-in-left-bottom-desc">
-                                {description} <br/>
+                                Description: {description} <br/>
                                 <br/>
                                 Rating: {rating} <br/>
                                 Game: {game} <br/>

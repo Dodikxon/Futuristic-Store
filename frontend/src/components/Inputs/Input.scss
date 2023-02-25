@@ -1,3 +1,4 @@
+@import "./src/index";
 .input{
   height: 50px;
   width: 100%;
@@ -5,28 +6,36 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 25px;
+  font-size: $font-size;
   font-weight: 400;
   margin: 15px 0 0 0;
-  color: #0D0D0D;
+  color: $color2;
+  background: $background;
+  border: 1px solid $color3;
+  border-radius: 5px;
+  &:focus{
+    background: $background;
+  }
 }
 
 .submit{
-  margin: 15px 0 0 0;
-  height: 45px;
-  color: #F2F0D5;
-  font-size: 25px;
+  margin: 25px 0 0 0;
+  height: 50px;
+  border-radius: 5px;
+  font-size: $font-size;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 700;
   transition: all 0.5s ease;
   width: 100%;
-  background: #282c34;
-  border: 0;
-
+  border: 1px solid $color3;
+  color: $background;
+  background: $color2;
   &:hover{
     transition: all 0.5s ease;
-    color: #0D0D0D;
-    background: #05f2f2;
+    color: $color2;
+    background: $background;
+    text-shadow: $font-border;
+
   }
 }
 
@@ -41,19 +50,28 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 25px;
+  font-size: $font-size;
   font-weight: 400;
   margin: 15px 0 0 0;
-  color: #0D0D0D;
+  color: $color2;
+  background: $background;
+  border: 1px solid $color3;
+  padding: 10px 0 0 0;
+  border-radius: 5px;
+  &:focus{
+    background: $background;
+  }
 }
 
 ::placeholder{
   text-transform: uppercase;
-  color: #0D0D0D;
-  font-weight: 300;
+  color: $color2;
+  font-weight: 700;
+  font-size: $font-size;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-shadow: $font-border;
 }
 
 .selector{
@@ -69,8 +87,9 @@
     height: 50px;
     text-align: center;
     font-size: 25px;
-    font-weight: 400;
-    color: #F2F0D5;
+    font-weight: 700;
+    text-shadow: $font-border;
+    color: $color2;
     display: flex;
     margin: 15px 0 0 0;
     justify-content: center;
@@ -84,33 +103,43 @@
     text-align: center;
     font-size: 25px;
     margin: 15px 0 0 0;
-    font-weight: 400;
+    font-weight: 700;
     display: flex;
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
+    color: $color2;
+    background: $background;
+    border: 1px solid $color3;
+    border-radius: 5px;
+    text-shadow: $font-border;
+    option{
+      font-weight: 700;
+    }
+    &:focus{
+      background: $background;
+    }
   }
 }
 
 .button{
-  color: #05f2f2;
+  color: $color3;
   width: 200px;
   height: 30px;
-  font-size: 25px;
+  font-size: $font-size;
   display: flex;
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
   border-radius: 10px;
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 100;
+  font-family: $font;
+  font-weight: 700;
   transition: all 0.5s ease;
   border: none;
-
+  text-shadow: $font-border;
   &:hover{
-    color: #F2F0D5;
-    font-size: 30px;
+    color: $color3;
+    font-size: $font-size-hover;
     transition: all 0.5s ease;
-    font-weight: 700;
   }
 }

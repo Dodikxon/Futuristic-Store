@@ -1,6 +1,13 @@
+@import "./src/index";
 .title{
   font-weight: 400;
-  font-size: 50px;
-  color: #F2F0D5;
+  font-size: $title-font-size;
+  color: $color3;
+  text-shadow: $font-border;
   text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  user-select: none;
 }

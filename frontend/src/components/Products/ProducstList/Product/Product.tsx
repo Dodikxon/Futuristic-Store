@@ -16,11 +16,11 @@ function Title(props: any){
 
 
 function Rating(props: any){
-    return <p className="product-price">{props.rating}</p>
+    return <p className="product-price">Rating: {props.rating}</p>
 }
 
 function Price(props: any){
-    return <h6 className="product-price">{props.price}</h6>
+    return <h6 className="product-price">Price: {props.price}</h6>
 }
 
 function Image(props: any){
@@ -30,15 +30,17 @@ function Image(props: any){
 const Product = (props: any) => {
 
     return (
-        <div className="product">
-            <div className="product-text">
-                <Image src={`${api}/products/${props.productSrc}`} alt={props.productAlt}/>
-                <Title detail={props.productDetail} title={props.productTitle}/>
-                <Rating rating={props.productRating}/>
-                <Price price={props.productPrice} />
-                <Button name={'buy'} link={`/${props.productDetail}`} />
+        <Link to={props.productDetail}>
+            <div className="product">
+                <div className="product-text">
+                    <Image src={`${api}/products/${props.productSrc}`} alt={props.productAlt}/>
+                    <Title title={props.productTitle}/>
+                    <Rating rating={props.productRating}/>
+                    <Price price={props.productPrice} />
+                    <Button name={'buy'} link={`/${props.productDetail}`} />
+                </div>
             </div>
-        </div>
+        </Link>
     );
 };
 

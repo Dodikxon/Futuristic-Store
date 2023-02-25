@@ -1,3 +1,4 @@
+@import "./src/index";
 .detail{
 
   &-in{
@@ -19,7 +20,8 @@
         }
         &-desc{
           font-size: 40px;
-          color: #F2F0D5;
+          color: $color3;
+          text-shadow: $font-border;
           width: 50%;
           text-align: left;
           font-weight: 400;
