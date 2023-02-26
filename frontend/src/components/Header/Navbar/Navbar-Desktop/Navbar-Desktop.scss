@@ -3,12 +3,17 @@
   justify-content: center;
   align-items: center;
 
-  @media (max-width: 520px) {
+  &-link{
+    margin: 0 20px 0 0;
+
+    &:last-child{
+      margin: 0;
+    }
+  }
+
+  @media (max-width: 599px) {
     &{
       display: none;
     }
-  }
-  &-link{
-
   }
 }

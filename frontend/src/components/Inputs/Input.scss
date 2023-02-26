@@ -124,7 +124,6 @@
 
 .button{
   color: $color3;
-  width: 200px;
   height: 30px;
   font-size: $font-size;
   display: flex;
@@ -137,8 +136,7 @@
   transition: all 0.5s ease;
   border: none;
   text-shadow: $font-border;
-
-  @media (max-width: 520px) {
+  @media (max-width: 599px) {
     margin: 15px 0 0 0;
   }
   &:hover{

@@ -10,4 +10,10 @@
   align-items: center;
   text-align: center;
   user-select: none;
+  
+  @media (max-width: 550px) {
+    &{
+      font-size: 40px;
+    }
+  }
 }
