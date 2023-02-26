@@ -1,0 +1,64 @@
+@import "./src/index";
+.navbar-mobile{
+  display: none;
+  width: 100%;
+
+  @media (max-width: 520px) {
+    display: block;
+  }
+  &-link{
+    width: 200px;
+    top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    position: absolute;
+    height: 200px;
+
+    &openSublinks{
+      width: 100vw;
+      top: 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: baseline;
+      position: absolute;
+      height: 100vh;
+      background: $background;
+      z-index: 10000;
+    }
+    &-sublinks{
+      display: none;
+    }
+    &-menu{
+      display: inline-block;
+    }
+  }
+}
+
+.openSublinks{
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+}
+
+
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: $color4;
+  box-shadow: $font-border;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.change .bar1 {
+  transform: translate(0, 11px) rotate(-45deg);
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+  transform: translate(0, -11px) rotate(45deg);
+}

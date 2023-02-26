@@ -59,7 +59,6 @@ const ProductList = () => {
                                       name={'game'}
                                       change={setGame}
                                       selectorValue={game}
-                                      placeholder={'select game'}
                                       value2={'LOL'}/>
                             <Submit value={isSubmit}
                                     change={setIsSubmit}

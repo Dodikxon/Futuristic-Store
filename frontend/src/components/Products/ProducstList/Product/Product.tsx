@@ -30,7 +30,7 @@ function Image(props: any){
 const Product = (props: any) => {
 
     return (
-        <Link to={props.productDetail}>
+        <Title detail={props.productDetail} title={
             <div className="product">
                 <div className="product-text">
                     <Image src={`${api}/products/${props.productSrc}`} alt={props.productAlt}/>
@@ -40,7 +40,8 @@ const Product = (props: any) => {
                     <Button name={'buy'} link={`/${props.productDetail}`} />
                 </div>
             </div>
-        </Link>
+        }>
+        </Title>
     );
 };
 

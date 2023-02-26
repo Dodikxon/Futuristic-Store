@@ -6,9 +6,11 @@
   align-items: center;
   width: 100%;
 }
+
 .header-navbar-mobile{
   display: none;
 }
+
 .navbar-close{
   display: none;
 }
@@ -21,6 +23,7 @@
   .header-navbar-desktop{
     display: none;
   }
+
   .header-navbar-mobile{
     display: flex;
     position: absolute;

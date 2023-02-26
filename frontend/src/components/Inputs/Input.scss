@@ -137,6 +137,10 @@
   transition: all 0.5s ease;
   border: none;
   text-shadow: $font-border;
+
+  @media (max-width: 520px) {
+    margin: 15px 0 0 0;
+  }
   &:hover{
     color: $color3;
     font-size: $font-size-hover;
