@@ -21,14 +21,17 @@ const NavbarMobile = () => {
     if(token()){
         return (
             <nav className="navbar-mobile">
-                <ul className="navbar-desktop-link">
-                    <Button link={'/'} name={'Store'}/>
-                </ul>
-                <ul className="navbar-desktop-link">
-                    <Button link={'/sale'} name={'Sale'}/>
-                </ul>
-                <ul className="navbar-desktop-link">
-                    <Button link={'/login'} name={'logout'}/>
+                <ul className={`navbar-mobile-link${openSublinksClass}`}>
+                    <li className={`navbar-mobile-link-menu ${openMenuClass}`} onClick={OpenMenu}>
+                        <div className={`bar1`}></div>
+                        <div className={`bar2`}></div>
+                        <div className={`bar3`}></div>
+                    </li>
+                    <ul className={`navbar-mobile-link-sublinks ${openSublinksClass}`}>
+                        <Button link={'/'} name={'Store'}/>
+                        <Button link={'/sale'} name={'Sale'}/>
+                        <Button link={'/login'} name={'logout'}/>
+                    </ul>
                 </ul>
             </nav>
         )
