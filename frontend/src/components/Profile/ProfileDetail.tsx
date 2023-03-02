@@ -3,6 +3,7 @@ import Title from "../Title/Title";
 import axios from "axios";
 import {api} from "../../api/api";
 import Product from "../Products/ProducstList/Product/Product";
+import './ProfileDetail.scss';
 
 const ProfileDetail = () => {
     const [username, setUsername] = useState('')
@@ -22,11 +23,13 @@ const ProfileDetail = () => {
         <div className='profile'>
             <div className="container">
                 <div className="profile-in">
-                    <Title title={username}/>
+                    <Title title={'Profile ' + username}/>
+                    <br/>
+                    <Title title={'Products list'}/>
                     <div className="profile-in-products">
                         {products.map( ({game, image, price, rating, title}) =>
                             <Product
-                                productDetail={title}
+                                productDetail={`${title}`}
                                 productSrc={image}
                                 productAlt={game}
                                 productTitle={title}
