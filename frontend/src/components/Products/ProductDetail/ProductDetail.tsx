@@ -3,6 +3,7 @@ import axios from "axios";
 import './ProductDetail.scss';
 import {api} from "../../../api/api";
 import Title from "../../Title/Title";
+import {Link} from "react-router-dom";
 
 const ProductDetail = () => {
     const [title, setTitle] = useState('')
@@ -43,7 +44,7 @@ const ProductDetail = () => {
                                 <br/>
                                 Rating: {rating} <br/>
                                 Game: {game} <br/>
-                                Seller: {username} <br/>
+                                Seller: <Link onClick={e => localStorage.setItem('goToProfile', username)} className="detail-in-left-bottom-seller" to={`http://localhost:3000/profile/${username}/`}>{username}</Link> <br/>
                                 Price: {price} RUB
                             </p>
                         </div>
