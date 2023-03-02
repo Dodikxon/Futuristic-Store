@@ -7,6 +7,7 @@ import Selector from "../../Inputs/Selector";
 import Submit from "../../Inputs/Submit";
 import Product from "./Product/Product";
 import Title from "../../Title/Title";
+import Filter from "./Filter/Filter";
 
 
 
@@ -55,15 +56,11 @@ const ProductList = () => {
                 <div className="productList-in">
                     <div className="productList-in-top">
                         <div className='filter'>
-                            <Selector value1={'Dota 2'} value={'select game'}
-                                      name={'game'}
-                                      change={setGame}
-                                      selectorValue={game}
-                                      value2={'LOL'}/>
-                            <Submit value={isSubmit}
-                                    change={setIsSubmit}
-                                    action={fetchProductsByGame}
-                                    email={game}/>
+                            <Filter setGame={setGame}
+                                    isSubmit={isSubmit}
+                                    setIsSubmit={setIsSubmit}
+                                    fetchProductByGame={fetchProductsByGame}
+                                    game={game}/>
                         </div>
                     </div>
                     <div className="productList-in-bottom">

@@ -12,7 +12,8 @@ import { Products } from './products/products.model';
 import { MulterModule } from '@nestjs/platform-express';
 import { Chat } from './chat/chat.model';
 import { ChatController } from './chat/chat.controller';
-import {ChatModule} from "./chat/chat.module";
+import { ChatModule } from './chat/chat.module';
+import { AppGateway } from './app/app.gateway';
 
 @Module({
   imports: [
@@ -38,6 +39,6 @@ import {ChatModule} from "./chat/chat.module";
     ChatModule,
   ],
   controllers: [AuthController, ProductsController, ChatController],
-  providers: [AuthService],
+  providers: [AuthService, AppGateway],
 })
 export class AppModule {}
